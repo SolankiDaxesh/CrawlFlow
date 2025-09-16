@@ -12,6 +12,7 @@ var mongoSettings = builder.Configuration.GetSection("MongoDb");
 var connectionString = mongoSettings.GetValue<string>("ConnectionString");
 var databaseName = mongoSettings.GetValue<string>("DatabaseName");
 
+builder.Services.AddControllers();
 builder.Services.AddSingleton(new CrawlFlow.Infrastructure.MongoContext(connectionString, databaseName));
 var app = builder.Build();
 
